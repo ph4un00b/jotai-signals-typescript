@@ -55,7 +55,7 @@ function CounterWithSignal() {
     <View>
       <Text style={styles.h1}>With $(atom)</Text>
       <Text style={styles.p}>
-        Count: {$(countAtom)} {Math.random()}
+        Count: {$(countAtom)} ({Math.random()})
       </Text>
     </View>
   );
