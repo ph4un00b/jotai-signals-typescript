@@ -12,6 +12,7 @@ export default function App() {
       <View>
         <Controls />
         <Counter />
+        <CounterWithHandCompiledSignal />
         <CounterWithSignal />
       </View>
     </View>
@@ -31,10 +32,10 @@ function Counter() {
   );
 }
 
-function CounterWithSignal() {
+function CounterWithHandCompiledSignal() {
   return (
     <View>
-      <Text style={styles.h1}>With $(atom)</Text>
+      <Text style={styles.h1}>With createElement($(atom))</Text>
 
       {createElement(
         Text,
@@ -45,6 +46,17 @@ function CounterWithSignal() {
         Math.random(),
         ")"
       )}
+    </View>
+  );
+}
+
+function CounterWithSignal() {
+  return (
+    <View>
+      <Text style={styles.h1}>With $(atom)</Text>
+      <Text style={styles.p}>
+        Count: {$(countAtom)} {Math.random()}
+      </Text>
     </View>
   );
 }
