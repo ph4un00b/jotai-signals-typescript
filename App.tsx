@@ -1,11 +1,13 @@
 /** @jsxImportSource jotai-signal */
 
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import { atom } from "jotai/vanilla";
 import { useAtom, useSetAtom } from "jotai/react";
 import { $, createElement } from "jotai-signal";
+import { ReactElement, ReactNode } from "react";
 
 const countAtom = atom(0);
+const showAtom = atom(true);
 
 export default function App() {
 	return (
@@ -13,12 +15,29 @@ export default function App() {
 			<Text style={styles.paragraph}>React Native Example</Text>
 			<View>
 				<Controls />
-				<Counter />
-				<CounterWithHandCompiledSignal />
-				<CounterWithSignal />
+				<Show show={$(showAtom)} fallback={<View><Text>Hidden!</Text></View>}>
+					<Counter />
+					<CounterWithHandCompiledSignal />
+					<CounterWithSignal />
+				</Show>
 			</View>
 		</View>
 	);
+}
+
+function Show({
+	show,
+	fallback,
+	children,
+}: {
+	show: boolean;
+	fallback: ReactNode;
+	children: ReactNode;
+}) {
+	if (show) {
+		return children as ReactElement;
+	}
+	return fallback as ReactElement;
 }
 
 function Counter() {
@@ -46,7 +65,7 @@ function CounterWithHandCompiledSignal() {
 				$(countAtom),
 				" (",
 				Math.random(),
-				")"
+				")",
 			)}
 		</View>
 	);
@@ -65,36 +84,42 @@ function CounterWithSignal() {
 
 function Controls() {
 	const setCount = useSetAtom(countAtom);
+	const [show, setShow] = useAtom(showAtom);
 	return (
-		<View>
+		<View style={styles.controls}>
 			<Button onPress={() => setCount((c) => c + 1)} title="increment" />
+			<Button onPress={() => setShow((x) => !x)} title={show ? 'Hide' : 'Show'} />
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
+	controls: {
+		flexDirection: "row",
+		justifyContent: "space-evenly"
+	},
 	container: {
 		flex: 1,
 		justifyContent: "center",
 		backgroundColor: "#ecf0f1",
-		padding: 8
+		padding: 8,
 	},
 	paragraph: {
 		margin: 24,
 		fontSize: 18,
 		fontWeight: "bold",
-		textAlign: "center"
+		textAlign: "center",
 	},
 	p: {
 		margin: 24,
 		fontSize: 14,
 		fontWeight: "bold",
-		textAlign: "center"
+		textAlign: "center",
 	},
 	h1: {
 		margin: 24,
 		fontSize: 18,
 		fontWeight: "bold",
-		textAlign: "center"
-	}
+		textAlign: "center",
+	},
 });
