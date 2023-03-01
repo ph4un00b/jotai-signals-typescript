@@ -3,8 +3,9 @@
 
 ##### info
 - issue: https://github.com/jotaijs/jotai-signal/issues/9
-- [Demystifying Create React Signals Internals](https://blog.axlight.com/posts/demystifying-create-react-signals-internals/)
-
+- [Demystifying Create React Signals Internals from Daishi Kato](https://blog.axlight.com/posts/demystifying-create-react-signals-internals/)
+- [React vs Signals from Ryan Carniato](https://dev.to/this-is-learning/react-vs-signals-10-years-later-3k71)
+- [Response from Dan Abramov](https://dev.to/dan_abramov/comment/256g9)
 ##### worked on
 - [x] javascript (npx create-expo-app my-app)
 - [x] typescript (sdk 48, npx create-expo-app --template)
