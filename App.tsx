@@ -1,20 +1,9 @@
-// /** @jsxImportSource jotai-signal */
+/** @jsxImportSource jotai-signal */
 
 /**
- * @throws
- * on device: expo go yields syntax error:
- * jotai-signal/jsx-runtime could not
- * be found within the project
- * or in these directories
- * node_modules
- *
- * @summary
- * currently using `tsconfig.json`
- * "jsxImportSource": "jotai-signal"
- *
- * in order to avoid the error
- * with no luck at the moment
- * this works well on react-native-web tho!
+ * added necessary config
+ * in order to work with jsxImportSource
+ * @see metro.config.js
  */
 
 import { Button, StyleSheet, Text, View } from "react-native";
