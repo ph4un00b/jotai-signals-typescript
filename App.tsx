@@ -1,3 +1,5 @@
+/** @jsxImportSource jotai-signal */
+
 import { Text, View, StyleSheet, Button } from "react-native";
 import { atom } from "jotai/vanilla";
 import { useAtom, useSetAtom } from "jotai/react";
