@@ -25,4 +25,4 @@
 - https://snack.expo.dev/kjclneke1
 - https://codesandbox.io/s/priceless-star-kg7dmh?file=/src/App.js
 
-<img src="preview.gif" />
+<img src="preview.jpg" />
