@@ -1,0 +1,16 @@
+# EditorConfig is awesome: https://editorconfig.org/index
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = tab
+# you can adjust this during development
+indent_size = 2
+
+# yml is a very special guy ¯\_( ͡° ͜ʖ ͡°)_/¯
+[*.yml]
+indent_style = space
+indent_size = 2
