@@ -2,6 +2,7 @@
 ### jotai/signals library
 
 ##### info
+- issue: https://github.com/jotaijs/jotai-signal/issues/9
 - [Demystifying Create React Signals Internals](https://blog.axlight.com/posts/demystifying-create-react-signals-internals/)
 
 ##### worked on
