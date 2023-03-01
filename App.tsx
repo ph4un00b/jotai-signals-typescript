@@ -8,7 +8,8 @@ import { ReactElement, ReactNode } from "react";
 
 const countAtom = atom(0);
 const showAtom = atom(true);
-const countSignal = atomSignal(0);
+const countAtomSignal = atomSignal(0);
+const doubled = atomSignal((get) => get(countAtomSignal) * 2);
 
 export default function App() {
 	return (
@@ -96,7 +97,10 @@ function CounterAtomSignal() {
 		<View>
 			<Text style={styles.h1}>AtomSignal $(atom)</Text>
 			<Text style={styles.p}>
-				Count: {countSignal} ({Math.random()})
+				Count: {countAtomSignal} ({Math.random()})
+			</Text>
+			<Text style={styles.p}>
+				Doubled: {doubled}
 			</Text>
 		</View>
 	);
@@ -105,7 +109,7 @@ function CounterAtomSignal() {
 function Controls() {
 	const setCount = useSetAtom(countAtom);
 	const [show, setShow] = useAtom(showAtom);
-	const setAtomSignalCount = useSetAtom(countSignal);
+	const setAtomSignalCount = useSetAtom(countAtomSignal);
 	return (
 		<View style={styles.controls}>
 			<Button
