@@ -3,11 +3,12 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import { atom } from "jotai/vanilla";
 import { useAtom, useSetAtom } from "jotai/react";
-import { $, createElement } from "jotai-signal";
+import { $, atomSignal, createElement } from "jotai-signal";
 import { ReactElement, ReactNode } from "react";
 
 const countAtom = atom(0);
 const showAtom = atom(true);
+const countSignal = atomSignal(0);
 
 export default function App() {
 	return (
@@ -15,10 +16,18 @@ export default function App() {
 			<Text style={styles.paragraph}>React Native Example</Text>
 			<View>
 				<Controls />
-				<Show show={$(showAtom)} fallback={<View><Text>Hidden!</Text></View>}>
+				<Show
+					show={$(showAtom)}
+					fallback={
+						<View>
+							<Text>Hidden!</Text>
+						</View>
+					}
+				>
 					<Counter />
 					<CounterWithHandCompiledSignal />
 					<CounterWithSignal />
+					<CounterAtomSignal />
 				</Show>
 			</View>
 		</View>
@@ -82,13 +91,34 @@ function CounterWithSignal() {
 	);
 }
 
+function CounterAtomSignal() {
+	return (
+		<View>
+			<Text style={styles.h1}>AtomSignal $(atom)</Text>
+			<Text style={styles.p}>
+				Count: {countSignal} ({Math.random()})
+			</Text>
+		</View>
+	);
+}
+
 function Controls() {
 	const setCount = useSetAtom(countAtom);
 	const [show, setShow] = useAtom(showAtom);
+	const setAtomSignalCount = useSetAtom(countSignal);
 	return (
 		<View style={styles.controls}>
-			<Button onPress={() => setCount((c) => c + 1)} title="increment" />
-			<Button onPress={() => setShow((x) => !x)} title={show ? 'Hide' : 'Show'} />
+			<Button
+				onPress={() => {
+					setCount((c) => c + 1);
+					setAtomSignalCount((c) => c + 1);
+				}}
+				title="increment"
+			/>
+			<Button
+				onPress={() => setShow((x) => !x)}
+				title={show ? "Hide" : "Show"}
+			/>
 		</View>
 	);
 }
@@ -96,7 +126,7 @@ function Controls() {
 const styles = StyleSheet.create({
 	controls: {
 		flexDirection: "row",
-		justifyContent: "space-evenly"
+		justifyContent: "space-evenly",
 	},
 	container: {
 		flex: 1,
