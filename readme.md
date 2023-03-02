@@ -7,6 +7,7 @@
 - [React vs Signals from Ryan Carniato](https://dev.to/this-is-learning/react-vs-signals-10-years-later-3k71)
 - [Response from Dan Abramov](https://dev.to/dan_abramov/comment/256g9)
 - [Signals on Vue from Vue's Docs](https://vuejs.org/guide/extras/reactivity-in-depth.html#connection-to-signals)
+- [Signals comparison Video from Jack Herrington](https://www.youtube.com/watch?v=ZLMjJL70glE)
 ##### worked on
 - [x] javascript (npx create-expo-app my-app)
 - [x] typescript (sdk 48, npx create-expo-app --template)
